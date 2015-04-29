@@ -28,10 +28,10 @@ for file in dirs:
             files3.append(file)
         i=i+1
 
-#def kirimgambar( listGambar, server ):
-    #client = Client('http://'+server+'/Convert/soap/description')
-def kirimgambar( listGambar ):
-    client = Client('http://localhost:8080/Convert/soap/description')
+def kirimgambar( listGambar, server ):
+    client = Client('http://'+server+'/Convert/soap/description')
+#def kirimgambar( listGambar ):
+    #client = Client('http://localhost:8080/Convert/soap/description')
     
     for file in listGambar:
         fullpath=path+file
@@ -49,9 +49,9 @@ def kirimgambar( listGambar ):
 
 # Create two threads as follows
 try:
-   thread.start_new_thread( kirimgambar, (files1, ) )
-   thread.start_new_thread( kirimgambar, (files2, ) )
-   thread.start_new_thread( kirimgambar, (files3, ) )
+   thread.start_new_thread( kirimgambar, (files1, '10.151.36.28:8080' ) )
+   thread.start_new_thread( kirimgambar, (files2, '10.151.36.34:8080' ) )
+   thread.start_new_thread( kirimgambar, (files3, '10.151.36.35:8080' ) )
 except:
    print "Error: unable to start thread"
 
